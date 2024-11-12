@@ -7,7 +7,7 @@ namespace m2
     {
       public decimal GetAverage()
       {
-        return SubjectPoints.Values.Average();
+        return Math.Round(SubjectPoints.Values.Average(), 3);
       }
       public void AddSubject(string subject, decimal score)
       {
@@ -25,10 +25,10 @@ namespace m2
                 { "Информатика", 76.5m },
                 { "Математика", 55.9m },
                 { "Физика", 65.7m },
-                { "Русский язык", 75.2m },
-                { "Английский язык", 80.2m }
             };
       Points points = new Points(pointsBase);
+      points.AddSubject("Русский язык", 75.2m);
+      points.AddSubject("Английский язык", 80.3m);
       decimal average = points.GetAverage();
 
       string infoOutput = $"ФИО: {fullName}\n" +
