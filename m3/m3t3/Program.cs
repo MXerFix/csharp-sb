@@ -2,11 +2,11 @@
 
 internal class Program
 {
-    private static bool IsSimpleNumber(long number)
+    private static bool IsSimpleNumber(ulong number)
     {
         bool result = true;
-        long div = 2;
-        while (div <= (long)Math.Sqrt(number))
+        ulong div = 2;
+        while (div <= (ulong)Math.Sqrt(number))
         {
             if (number % div == 0)
             {
@@ -25,9 +25,9 @@ internal class Program
         Console.WriteLine("Программа выполняет проверку на простое число.");
         Console.WriteLine("Введите число для проверки: ");
         string? userInputNumber = Console.ReadLine();
-        if (!long.TryParse(userInputNumber, out long number))
+        if (!ulong.TryParse(userInputNumber, out ulong number) || number <= 1)
         {
-            throw new Exception("Число введено некорректно!");
+            throw new Exception("Введено некорректное число!");
         }
 
         Console.WriteLine(
