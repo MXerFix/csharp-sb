@@ -15,7 +15,7 @@ internal class Program
 
     private static void GuessNumber(int range)
     {
-        int randomNumber = Random.Shared.Next(range);
+        int randomNumber = Random.Shared.Next(range + 1);
         int counter = 0;
         while (true)
         {
