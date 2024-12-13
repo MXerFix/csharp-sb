@@ -94,7 +94,7 @@ internal class Program
         }
     }
 
-    
+
     private static int FindMaxFieldId(string[] fileData)
     {
         int maxId = 0;
@@ -224,15 +224,23 @@ internal class Program
     {
         var config = new InputValidationConfig<int>
         {
-            MinLength = 1, MaxLength = 1, AllowWhitespace = false,
-            Converter = (input) => int.TryParse(input, out var result) ? result : -1
+            MinLength = 1, MaxLength = 1, AllowWhitespace = false
         };
         for (int i = 0; i < actions.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {actions.ElementAt(i).Key}");
         }
 
-        int input = ReadValidLine(config);
+        int input = 0;
+        while (input > actions.Count || input < 1)
+        {
+            input = ReadValidLine(config);
+            if (input > actions.Count || input < 1)
+            {
+                Console.WriteLine("Такого пункта нет в меню!");
+            }
+        }
+
         actions.ElementAt(input - 1).Value();
     }
 
